@@ -1,0 +1,39 @@
+
+
+    if txt=="callxfrom":
+      d = dict(listx)
+      vx = d[txt]
+      lis = eval(str(vx[1]))
+      text = vx[0]
+      call = vx[2]
+      n = ', '.join([f"('   Class- {str(i+numxopt)}   ', '{linkx}{lis[i]}/stream/{str(i+numxopt)}', 'url')" for i in range(len(lis))])
+      m = eval(f'[{n}]')
+      m1 = len(m) % 3
+      p = []
+      if m1 == 0 :
+        p1 = [(m[i],m[i+1],m[i+2]) for i in range(0,len(m),3)]
+        p1.append([('Back', f'{call}')])
+        p = repr(p1)
+        for i in range(len(d1)):
+          p = p.replace(d1[i], d2[i])
+      if m1 == 1 :
+        m2 = m[:-1]
+        y = m[-1:]
+        y.append(('Back', f'{call}'))
+        p1 = [(m2[i],m2[i+1],m2[i+2]) for i in range(0,len(m2),3)]
+        p1.append(y)
+        p = repr(p1)
+        for i in range(len(d1)):
+          p = p.replace(d1[i], d2[i])
+      if m1 == 2 :
+        m2 = m[:-2]
+        y = m[-2:]
+        y.append(('Back', f'{call}'))
+        p1 = [(m2[i],m2[i+1],m2[i+2]) for i in range(0,len(m2),3)]
+        p1.append(y)
+        p = repr(p1)
+        for i in range(len(d1)):
+          p = p.replace(d1[i], d2[i])
+      await client.send_message(chat_id=callback_query.message.chat.id, text=text, disable_web_page_preview=True, reply_markup=ikb(eval(p)))
+      await callback_query.message.delete()
+

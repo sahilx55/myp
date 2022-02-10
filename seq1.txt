@@ -1,0 +1,9 @@
+from pyrogram import Client
+from generator import sudo_users
+import Config
+
+async def mydata(client,callback_query):
+  if str(callback_query.message.chat.id) in sudo_users:
+    txt=callback_query.data
+
+
